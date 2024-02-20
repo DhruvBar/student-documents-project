@@ -1,6 +1,6 @@
 package com.documents.model;
 
-public class documentDetails {
+public class DocumentDetails {
     private int documentId;
 
 }

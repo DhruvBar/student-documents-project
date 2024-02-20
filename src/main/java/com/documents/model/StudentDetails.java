@@ -7,20 +7,13 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "Student_Details")
-public class studentDetails {
+public class StudentDetails {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "Request_ID")
-    private Long requestId;
     @Column(name = "Student_ID")
     private int studentId;
     @Column(name = "Email")
     private String emailId;
     @Column(name = "Student_Name")
     private String Name;
-    @Column(name = "Student_Contact")
-    private int contactNo;
-
-
 }
