@@ -1,9 +1,9 @@
 package com.documents.service;
 
-import com.documents.model.studentDetails;
+import com.documents.model.StudentDetails;
 
 public interface UserService{
-    studentDetails createUser(studentDetails student);
+    StudentDetails createUser(StudentDetails student);
 
-
+    public boolean checkId(int studentId);
 }
