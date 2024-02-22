@@ -2,18 +2,21 @@ package com.documents.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="Admin_Details")
+@Table(name = "Admin_Details")
 public class AdminDetails {
-
-
-    @Id
-    private int adminId;
-    private String adminName;
-    private String password;
+    
+        @Id
+        @Column(name = "Admin_ID")
+        private int adminId;
+        @Column(name = "Email")
+        private String emailId;
+        @Column(name = "Admin_Name")
+        private String adminName;
+        @Column(name = "Password")
+        private String password;
+    
 }

@@ -1,6 +1,21 @@
 package com.documents.model;
 
-public class DocumentDetails {
-    // private int documentId;
+import lombok.Data;
+import java.sql.Timestamp;
+import javax.persistence.*;
 
+@Data
+@Entity
+@Table(name = "document_details")
+public class DocumentDetails {
+    
+        @Id
+        @Column(name = "document_id")
+        private int documentId;
+        @Column(name = "document_name")
+        private String documentName;
+        @Column(name = "document_cost")
+        private int documentCost;
+        @Column(name = "added_date")
+        private Timestamp addedDate;
 }

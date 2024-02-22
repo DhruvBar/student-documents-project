@@ -38,6 +38,7 @@ public class StudentController {
 //    }
 
     @PostMapping("/login")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> addStudent(@RequestBody StudentDetails student) {
         try {
             boolean f = userService.checkId(student.getStudentId());
