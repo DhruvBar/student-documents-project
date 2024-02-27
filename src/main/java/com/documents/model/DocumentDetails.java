@@ -1,7 +1,6 @@
 package com.documents.model;
 
 import lombok.Data;
-import java.sql.Timestamp;
 import javax.persistence.*;
 
 @Data
@@ -15,7 +14,5 @@ public class DocumentDetails {
         @Column(name = "document_name")
         private String documentName;
         @Column(name = "document_cost")
-        private int documentCost;
-        @Column(name = "added_date")
-        private Timestamp addedDate;
+        private double documentCost;
 }

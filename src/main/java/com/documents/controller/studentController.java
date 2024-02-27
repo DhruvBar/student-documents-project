@@ -2,7 +2,6 @@ package com.documents.controller;
 
 import com.documents.model.StudentDetails;
 import com.documents.repository.StudentRepository;
-import com.documents.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RestController
 public class StudentController {
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     StudentRepository userRepository;
@@ -41,7 +37,7 @@ public class StudentController {
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> addStudent(@RequestBody StudentDetails student) {
         try {
-            boolean f = userService.checkId(student.getStudentId());
+            boolean f = userRepository.existsById(student.getStudentId());
             if(f)
             {
                 student.setName(student.getName());

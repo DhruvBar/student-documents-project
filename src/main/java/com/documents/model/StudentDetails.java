@@ -11,7 +11,7 @@ public class StudentDetails {
 
     @Id
     @Column(name = "Student_ID")
-    private int studentId;
+    private String studentId;
     @Column(name = "Email")
     private String emailId;
     @Column(name = "Student_Name")

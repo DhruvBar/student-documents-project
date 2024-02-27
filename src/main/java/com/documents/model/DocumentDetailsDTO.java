@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class DocumentDetailsDTO  {
     private String Name;
-    private int Cost;
+    private double Cost;
 
     public DocumentDetailsDTO() {
     }
 
-    public DocumentDetailsDTO(String documentName, int documentCost) {
+    public DocumentDetailsDTO(String documentName, double documentCost) {
         this.Name = documentName;
         this.Cost = documentCost;
     }
