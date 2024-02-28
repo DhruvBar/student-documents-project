@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,6 +51,47 @@ public class PostController {
             // post.setPostTime(time);
             postRepo.save(post);
             return new ResponseEntity<>(post, null, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/post/update")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity <?> updatePost(@RequestBody PostDetails post) {
+        try {
+            PostDetails postDetails = postRepo.findByRequestId(post.getRequestId());
+            if (postDetails != null) {
+                if(post.getAddress() == null) {
+                    postDetails.setAddress(postDetails.getAddress());
+                } else {
+                    postDetails.setAddress(post.getAddress());
+                }
+                if(post.getAgencyName() == null) {
+                    postDetails.setAgencyName(postDetails.getAgencyName());
+                } else {
+                    postDetails.setAgencyName(post.getAgencyName());
+                }
+                if(post.getPostTime() == null) {
+                    postDetails.setPostTime(postDetails.getPostTime());
+                } else {
+                    postDetails.setPostTime(post.getPostTime());
+                }
+                if(post.getAddress() == null) {
+                    postDetails.setAddress(postDetails.getAddress());
+                } else {
+                    postDetails.setAddress(post.getAddress());
+                }
+                if(post.getTrackingId() == null) {
+                    postDetails.setTrackingId(postDetails.getTrackingId());
+                } else {
+                    postDetails.setTrackingId(post.getTrackingId());
+                }
+                postRepo.save(postDetails);
+                return new ResponseEntity<>(postDetails, null, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Post not found", null, HttpStatus.NOT_FOUND);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

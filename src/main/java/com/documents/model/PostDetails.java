@@ -1,7 +1,7 @@
 package com.documents.model;
 
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +20,9 @@ public class PostDetails {
     @Column(name = "agency_name")
     private String agencyName;
     @Column(name = "post_time")
-    private Timestamp postTime;
+    private Date postTime;
     @Column(name = "address")
     private String address;
+    @Column(name = "tracking_id")
+    private String trackingId;
 }

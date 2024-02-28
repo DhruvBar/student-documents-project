@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
@@ -27,6 +28,7 @@ public class DocumentController {
     DocumentRepo documentRepository;
 
     @PostMapping("/document/add")
+    @CrossOrigin(origins = "http://localhost:3000")
     public String addDocument(@RequestBody DocumentDetails documentDetails) {
         boolean f = documentRepository.existsById(documentDetails.getDocumentId());
         if (f) {
@@ -76,6 +78,21 @@ public class DocumentController {
                             document.getDocumentCost()))
                     .collect(Collectors.toList());
             return new ResponseEntity<>(documentDetailsDTOs, null, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/document/get")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public ResponseEntity<?> getDocument(@RequestParam int documentId) {
+        try {
+            DocumentDetails document = documentRepository.findByDocumentId(documentId);
+            if (document != null) {
+                return new ResponseEntity<>(document, null, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Document does not exist", null, HttpStatus.OK);
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
