@@ -62,7 +62,7 @@ public class PostController {
         try {
             PostDetails postDetails = postRepo.findByRequestId(post.getRequestId());
             if (postDetails != null) {
-                if(post.getAddress() == null) {
+                if(post.getAddress() == "") {
                     postDetails.setAddress(postDetails.getAddress());
                 } else {
                     postDetails.setAddress(post.getAddress());

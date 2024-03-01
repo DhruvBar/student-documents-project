@@ -59,6 +59,11 @@ public class DocumentController {
             DocumentDetails doc = documentRepository.findById(documentDetails.getDocumentId()).orElse(null);
             if (doc != null) {
                 doc.setDocumentCost(documentDetails.getDocumentCost());
+                if(documentDetails.getDocumentName() != null) {
+                    doc.setDocumentName(documentDetails.getDocumentName());
+                } else {
+                    doc.setDocumentName(doc.getDocumentName());
+                }
                 documentRepository.save(doc);
                 return new ResponseEntity<>(doc, null, HttpStatus.OK);
             } else {

@@ -15,4 +15,6 @@ public class DocumentDetails {
         private String documentName;
         @Column(name = "document_cost")
         private double documentCost;
+        @Column(name = "enabled")
+        private boolean enabled;
 }
